@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jurnal — Lintan</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #333;
+      margin: 0 4rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555;
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background-color: #f1f1f1;
+      color: #000;
+    }
+
+    /* Jurnal */
+    .journal {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .journal h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    .journal p {
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .journal-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff8f8;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      resize: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+    }
+
+    .save-btn {
+      margin-top: 1rem;
+      background: #ffb6c1;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+
+    .save-btn:hover {
+      background: #ff8da1;
+    }
+
+    .saved-journals {
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .saved-journals h3 {
+      margin-bottom: 1rem;
+      color: #444;
+    }
+
+    .saved-journals ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .saved-journals li {
+      background: #fff;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .delete-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: none;
+      border: none;
+      color: #ff5a5f;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1 class="logo">Lintan</h1>
+    <ul>
+      <li><a href="index.html">Rumah</a></li>
+      <li><a href="about.html">Tentang Saya</a></li>
+      <li><a href="calender.html">Kalender</a></li>
+      <li><a href="jurnal.html" class="active">Journaling</a></li>
+    </ul>
+  </nav>
+
+  <section class="journal">
+    <h2>Jurnal Harian</h2>
+    <p>Tulis hal-hal kecil yang kamu syukuri, ide yang muncul tiba-tiba, atau cerita sederhana dari harimu 🌷</p>
+
+    <div class="journal-container">
+      <textarea id="journalInput" placeholder="Tulis jurnalmu di sini..."></textarea>
+      <button class="save-btn" id="saveBtn">Simpan</button>
+      <div class="saved-journals">
+        <h3>Catatan Tersimpan</h3>
+        <ul id="journalList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Lintan.space</p>
+  </footer>
+
+  <script>
+    const textarea = document.getElementById('journalInput');
+    const button = document.getElementById('saveBtn');
+    const journalList = document.getElementById('journalList');
+
+    // Muat data dari localStorage
+    const savedJournals = JSON.parse(localStorage.getItem('journals')) || [];
+
+    function renderJournals() {
+      journalList.innerHTML = '';
+      savedJournals.forEach((entry, index) => {
+        const li = document.createElement('li');
+        li.textContent = entry;
+        const delBtn = document.createElement('button');
+        delBtn.textContent = '✕';
+        delBtn.className = 'delete-btn';
+        delBtn.onclick = () => {
+          savedJournals.splice(index, 1);
+          localStorage.setItem('journals', JSON.stringify(savedJournals));
+          renderJournals();
+        };
+        li.appendChild(delBtn);
+        journalList.appendChild(li);
+      });
+    }
+
+    renderJournals();
+
+    button.addEventListener('click', () => {
+      const text = textarea.value.trim();
+      if (text) {
+        savedJournals.push(text);
+        localStorage.setItem('journals', JSON.stringify(savedJournals));
+        textarea.value = '';
+        renderJournals();
+      }
+    });
+  </script>
+
+</body>
+</html>
