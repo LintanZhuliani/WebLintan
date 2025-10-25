@@ -1,0 +1,416 @@
+/* =========================
+RESET & DASAR
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #222;
+    line-height: 1.7;
+}
+
+/* =========================
+NAVBAR
+========================= */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0 2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+nav a.active,
+nav a:hover {
+    background-color: #f1f1f1;
+    color: #000;
+}
+
+/* =========================
+STORY / HERO SECTION
+========================= */
+.story {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 2rem;
+}
+
+.story-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    gap: 3rem;
+}
+
+/* --- TEKS DI KIRI --- */
+.text-content {
+    flex: 1;
+    text-align: left;
+    max-width: 500px;
+}
+
+.hero-name {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.story h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+}
+
+.story p {
+    font-size: 1.05rem;
+    color: #333;
+}
+
+/* --- ROLES (TIGA TEKS DI BAWAH) --- */
+.roles {
+    display: flex;
+    gap: 2rem;                  /* jarak antar teks */
+    margin-top: 2rem;           /* jarak dari paragraf atas */
+    font-size: 1rem;
+    color: #000;
+    font-weight: 500;
+}
+
+.roles span {
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.roles span:hover {
+    border-bottom: 1px solid #000; /* efek garis bawah saat dihover */
+}
+
+/* --- GIF DI KANAN --- */
+.hero-gif {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-gif img {
+    width: 400px; /* ubah ukuran di sini */
+    height: auto;
+    border-radius: 20px;
+    animation: float 4s ease-in-out infinite;
+}
+
+
+
+/* ==== Tentang Saya ==== */
+.about {
+text-align: center;
+padding: 100px 120px;
+background-color: #fff;
+}
+
+.about h2 {
+font-size: 42px;
+font-weight: 600;
+margin-bottom: 30px;
+}
+
+.about .intro {
+max-width: 700px;
+margin: 0 auto 80px auto;
+color: #000000;
+line-height: 1.8;
+}
+
+.about-container {
+display: flex;
+justify-content: space-between;
+gap: 60px;
+flex-wrap: wrap;
+}
+
+.about-card {
+flex: 1;
+min-width: 280px;
+background: #fafafa;
+border: 1px solid #000000;
+border-radius: 10px;
+padding: 40px 30px;
+text-align: left;
+transition: all 0.3s ease;
+}
+
+.about-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.about-card h3 {
+font-size: 20px;
+margin-bottom: 15px;
+color: #000;
+}
+
+.about-card ul {
+list-style: none;
+padding: 0;
+}
+
+.about-card li {
+margin-bottom: 10px;
+color: #000000;
+}
+
+.about-card p {
+color: #000000;
+line-height: 1.6;
+}
+
+/* Responsif */
+@media (max-width: 900px) {
+.about-container {
+    flex-direction: column;
+}
+.about {
+    padding: 60px 40px;
+}
+}
+
+/* LINK HOBI */
+.hobi-link {
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.hobi-link:hover {
+  border-bottom: 1px solid #000;
+}
+
+/* HALAMAN HOBI */
+.hobi-section {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.hobi-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+.hobi-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.hobi-gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobi-gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+    .calendar-container {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.day {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: #fff;
+}
+
+.day:hover {
+  background-color: #f0f0f0;
+}
+
+.day.marked {
+  background-color: #c7e8ca;
+  font-weight: bold;
+}
+
+.note-box {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.note-box.active {
+  display: flex;
+}
+
+#noteInput {
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#saveNote {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#saveNote:hover {
+  background-color: #555;
+}
+
+/* ==== JURNAL CANTIK ==== */
+.journal-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #e3f2fd;
+  min-height: 100vh;
+}
+
+.journal-section h2 {
+  color: #1976d2;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.journal-section .desc {
+  color: #555;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.journal-form textarea {
+  width: 80%;
+  height: 120px;
+  border-radius: 15px;
+  border: 2px solid #90caf9;
+  padding: 15px;
+  font-size: 1em;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+.journal-form textarea:focus {
+  border-color: #1976d2;
+  outline: none;
+  box-shadow: 0 0 10px #90caf9;
+}
+
+.journal-form button {
+  margin-top: 15px;
+  background-color: #64b5f6;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.journal-form button:hover {
+  background-color: #1e88e5;
+  transform: scale(1.05);
+}
+
+.journal-list {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.note {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+  padding: 15px 20px;
+  width: 250px;
+  text-align: left;
+  animation: fadeIn 0.5s ease;
+}
+
+.note span {
+  display: block;
+  text-align: right;
+  color: #888;
+  font-size: 0.85em;
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =========================
+    FOOTER
+========================= */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    color: #888;
+    border-top: 1px solid #eee;
+}
